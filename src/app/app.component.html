@@ -1,0 +1,28 @@
+<h1 class="app-title">Todo List</h1>
+
+<div class="container">
+  Add a Todolist
+  <br>
+  <br>
+  <input type="text" 
+    class="input-text" 
+    placeholder="Type a Todo"
+    [(ngModel)] = "todoValue"
+    (keyup.enter)="addItem()"
+
+  />
+  <button class="add-btn" (click)='addItem()' >Add</button>
+
+  <div class="lists">
+    <ul [@listAnimation]='list.length'>
+      <li *ngFor ="let item of list">
+        <input type="checkbox" 
+        name="isDone"
+        [(ngModel)] = 'item.isDone'
+        />
+        {{item.value}}
+        <button class="btn" (click)="deleteItem(item.id)" >Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
